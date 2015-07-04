@@ -1,0 +1,7 @@
+doctype html
+html
+    head
+        title #{error.status} #{message}
+    body
+        h1 #{error.status} #{message}
+        pre #{error.stack}
