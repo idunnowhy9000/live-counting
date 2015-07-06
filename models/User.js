@@ -2,10 +2,12 @@ var mongoose = require('mongoose');
 var passportLocalMongoose = require('passport-local-mongoose');
 
 var User = new mongoose.Schema({
-    username: String,
-    password: String,
-    gets: [{ type: String, default: 0 }],
-    getNum: { type: Number, default: 0 }
+    username: { type: String, unique: true },
+    password: { type: String },
+    
+    posts: [{ type: String }], // post ids
+    gets: [{ type: String }], // post ids
+    getsNum: [{ type: Number }] // number of gets
 });
 
 User.plugin(passportLocalMongoose);

@@ -10,7 +10,7 @@ var path = require('path');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-var router = require('./routers/router');
+var router = require('./routes/router');
 
 var app = module.exports = express();
 
@@ -29,7 +29,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // serve static
-app.use(express.static(path.join(__dirname, 'views')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', router);
 
 // passport config
@@ -39,7 +39,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 // mongoose
-mongoose.connect('mongodb://localhost/livecounting');
+mongoose.connect('mongodb://localhost/test');
 
 // api router
 app.use('/api', require('./routes/api'));
